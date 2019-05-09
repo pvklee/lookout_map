@@ -1,18 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {login, logout, signup} from './actions/session_actions'
 import configureStore from './store/store'
+
+import {login, logout, signup} from './actions/session_actions'
+
+
+import Root from './components/root'
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  window.signup = signup;
-  window.logout = logout;
-  window.login = login;
+  let store;
+  if (window.currentUser) {
+    const preloadedState = {
+      entities: {
+        users: { [window.currentUser.id]: window.currentUser }
+      },
+      session: { id: window.currentUser.id }
+    };
+    store = configureStore(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = configureStore();
+  }
 
-  const preloadedState = {};
-  const store = configureStore(preloadedState);
-  window.store = store; //debug
+  //TESTING
+  window.login = login;
+  window.logout = logout;
+  window.signup = signup;
+
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  //TESTING
 
   const root = document.getElementById('root');
-  ReactDOM.render(<h1>Welcome to Lookout Maps</h1>, root);
+  ReactDOM.render(<Root store={store}/>, root);
 });
