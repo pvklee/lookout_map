@@ -5,6 +5,7 @@ import {AuthRoute, ProtectedRoute} from '../util/route_util'
 import GreetingContainer from './greeting/greeting_container'
 import LoginFormContainer from './session_forms/login_form_container'
 import SignupFormContainer from './session_forms/signup_form_container'
+import SearchContainer from './lookouts/search_container'
 
 const App = () => (
   <div>
@@ -12,9 +13,9 @@ const App = () => (
       <h1>Lookout Maps</h1>
       <GreetingContainer />
     </header>
-
     <AuthRoute path="/login" component={LoginFormContainer} />
     <AuthRoute path="/signup" component={SignupFormContainer} />
+    <Route exact path='/' component={SearchContainer} />
   </div>
 );
 

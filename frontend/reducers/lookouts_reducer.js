@@ -1,4 +1,4 @@
-import {RECEIVE_LOOKOUTS} from '../actions/lookout_actions'
+import {RECEIVE_LOOKOUTS} from '../actions/lookouts_actions'
 import merge from 'lodash/merge'
 
 const lookoutsReducer = (state = {}, action) => {

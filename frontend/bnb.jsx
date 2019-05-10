@@ -4,7 +4,7 @@ import configureStore from './store/store'
 
 import Root from './components/root'
 
-import {fetchLookouts} from './actions/lookout_actions'
+import {fetchLookouts} from './actions/lookouts_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
 
