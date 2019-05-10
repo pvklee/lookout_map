@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store'
 
-import {login, logout, signup} from './actions/session_actions'
-
-
 import Root from './components/root'
+
+import {fetchLookouts} from './util/lookout_api_util'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -24,10 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //TESTING
-  window.login = login;
-  window.logout = logout;
-  window.signup = signup;
-
+  window.fetchLookouts = fetchLookouts;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   //TESTING
