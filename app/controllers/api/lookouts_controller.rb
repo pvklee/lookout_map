@@ -1,6 +1,7 @@
 class Api::LookoutsController < ApplicationController
   def index
-    @lookouts = Lookout.all
+    byebug
+    @lookouts = bounds ? Lookout.in_bounds(bounds) : Lookout.all
   end
 
   def create
@@ -16,6 +17,10 @@ class Api::LookoutsController < ApplicationController
 
   def lookout_params
     params.require(:lookout).permit(:description, :lat, :lng)
+  end
+
+  def bounds
+    params[:bounds]
   end
 
 end

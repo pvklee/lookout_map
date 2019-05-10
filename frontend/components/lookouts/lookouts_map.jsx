@@ -5,7 +5,7 @@ export default class LookoutsMap extends React.Component{
   componentDidMount(){
     const mapOptions = {
       center: {lat: 33.843099, lng: -118.344208}, //South Bay, CA
-      zoom: 11
+      zoom: 20
     };
 
     this.map = new google.maps.Map(this.mapNode, mapOptions);
