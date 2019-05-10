@@ -4,7 +4,7 @@ import LookoutsIndex from './lookouts_index'
 
 export default ({lookouts, fetchLookouts}) => (
   <div>
-    <LookoutsMap />
+    <LookoutsMap lookouts={lookouts}/>
     <LookoutsIndex lookouts={lookouts} fetchLookouts={fetchLookouts}/>
   </div>
 )
