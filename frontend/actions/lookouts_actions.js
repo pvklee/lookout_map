@@ -10,8 +10,8 @@ const receiveLookouts = lookouts => ({
 
 //async
 
-export const fetchLookouts = () => dispatch => (
-  APIUtil.fetchLookouts()
+export const fetchLookouts = bounds => dispatch => (
+  APIUtil.fetchLookouts(bounds)
     .then(lookouts => dispatch(receiveLookouts(lookouts)))
     // .fail(err => dispatch(receiveErrors(err.responseJSON)))
 )

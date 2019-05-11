@@ -5,7 +5,7 @@ const lookoutsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_LOOKOUTS:
-      return merge({}, state, action.lookouts); 
+      return action.lookouts; 
     default:
       return state;
   }

@@ -5,6 +5,7 @@ export default class LookoutsMap extends React.Component{
   componentDidMount(){
     const mapOptions = {
       center: {lat: 33.843099, lng: -118.344208}, //South Bay, CA
+      center: {lat: 50, lng: -50}, //random location
       zoom: 11
     };
 
@@ -25,7 +26,7 @@ export default class LookoutsMap extends React.Component{
       const { north, south, east, west } = this.map.getBounds().toJSON();
       const bounds = {northEast: {lat: north, lng: east},
                       southWest: {lat: south, lng: west}};
-      this.props.updateBounds(bounds);
+      this.props.updateFilter(bounds);
     })
   }
 

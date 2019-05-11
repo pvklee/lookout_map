@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
-import filterReducer from './filter_reducer'
+import filtersReducer from './filters_reducer'
 
 export default combineReducers({
-  filter: filterReducer,
+  filters: filtersReducer,
 })
