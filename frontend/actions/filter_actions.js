@@ -2,14 +2,15 @@ import {fetchLookouts} from './lookouts_actions'
 
 export const UPDATE_FILTER = "UPDATE_FILTER"
 
-export const changeFilter = filter => ({
+export const changeFilter = (filter, value) => ({
   type: UPDATE_FILTER,
-  filter
+  filter,
+  value
 })
 
 
-export const updateFilter = (filter) => (dispatch, getState) => {
-  dispatch(changeFilter(filter));
+export const updateFilter = (filter, value) => (dispatch, getState) => {
+  dispatch(changeFilter(filter, value));
   // return fetchLookouts(filter)(dispatch);
   return fetchLookouts(getState().ui.filters)(dispatch);
 };

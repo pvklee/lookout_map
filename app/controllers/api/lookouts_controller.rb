@@ -6,7 +6,7 @@ class Api::LookoutsController < ApplicationController
   def create
     @lookout = Lookout.new(lookout_params)
     if @lookout.save
-      render 'api/lookouts/index'
+      render 'api/lookouts/show'
     else
       render json: @lookout.errors.full_messages, status: 422
     end
@@ -15,7 +15,7 @@ class Api::LookoutsController < ApplicationController
   private
 
   def lookout_params
-    params.require(:lookout).permit(:description, :lat, :lng)
+    params.require(:lookout).permit(:description, :lat, :lng, :lookout_type)
   end
 
   def bounds

@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchLookouts: () => dispatch(fetchLookouts()),
-  updateFilter: bounds => dispatch(updateFilter(bounds))
+  updateFilter: (filter, value) => dispatch(updateFilter(filter, value))
 })
 
 export default connect(

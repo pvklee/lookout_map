@@ -1,0 +1,1 @@
+json.extract! @lookout, :id, :description, :lat, :lng, :lookout_type
