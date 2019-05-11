@@ -1,6 +1,5 @@
 class Api::LookoutsController < ApplicationController
   def index
-    byebug
     @lookouts = bounds ? Lookout.in_bounds(bounds) : Lookout.all
   end
 
