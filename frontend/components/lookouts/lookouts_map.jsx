@@ -60,7 +60,7 @@ class LookoutsMap extends React.Component{
 
   render(){
     return(
-      <div ref={map => this.mapNode = map} id="map-container">
+      <div className="map-container" ref={map => this.mapNode = map} id="map-container">
       </div>
     )
   }

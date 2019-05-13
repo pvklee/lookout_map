@@ -4,9 +4,13 @@ import LookoutsIndex from './lookouts_index'
 import FilterForm from './filter_form'
 
 export default ({lookouts, fetchLookouts, updateFilter}) => (
-  <div>
-    <LookoutsMap lookouts={lookouts} updateFilter={updateFilter} singleLookout={false}/>
-    <FilterForm updateFilter={updateFilter}/>
-    <LookoutsIndex lookouts={lookouts} fetchLookouts={fetchLookouts}/>
+  <div class="search-container">
+    <div class="search-map-container">
+      <LookoutsMap lookouts={lookouts} updateFilter={updateFilter} singleLookout={false}/>
+    </div>
+    <div class="search-index">
+      <FilterForm updateFilter={updateFilter}/>
+      <LookoutsIndex lookouts={lookouts} fetchLookouts={fetchLookouts}/>
+    </div>
   </div>
 )

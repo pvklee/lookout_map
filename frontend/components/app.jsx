@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Link} from 'react-router-dom'
 import {AuthRoute, ProtectedRoute} from '../util/route_util'
 
 import GreetingContainer from './greeting/greeting_container'
@@ -14,7 +14,7 @@ const App = () => (
     <header class="header">
       <nav class="header-nav">
         <div class="header-logo">
-          <h1>Lookout Maps</h1>
+          <Link to='/'><h1 class="header-logo-text">Lookout Maps</h1></Link>
         </div>
         <div class="header-greeting">
           <GreetingContainer />
