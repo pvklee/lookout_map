@@ -1,4 +1,4 @@
-import {RECEIVE_LOOKOUTS, RECEIVE_LOOKOUT} from '../actions/lookouts_actions'
+import {RECEIVE_LOOKOUTS, RECEIVE_LOOKOUT, RECEIVE_REVIEW} from '../actions/lookouts_actions'
 import merge from 'lodash/merge'
 
 const lookoutsReducer = (state = {}, action) => {
@@ -8,6 +8,11 @@ const lookoutsReducer = (state = {}, action) => {
       return action.lookouts; 
     case RECEIVE_LOOKOUT:
       return merge({}, state, {[action.lookout.id]: action.lookout})
+    case RECEIVE_REVIEW:
+      const review = action.review;
+      const newState = merge({}, state);
+      newState[review.lookout_id].reviewIds.push(review.id);
+      return newState;
     default:
       return state;
   }

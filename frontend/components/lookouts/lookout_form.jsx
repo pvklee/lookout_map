@@ -7,7 +7,7 @@ export default class LookoutForm extends React.Component {
       lat: this.props.lat,
       lng: this.props.lng,
       description: '',
-      lookout_type: ''
+      lookout_type: 'Easy'
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,10 +46,14 @@ export default class LookoutForm extends React.Component {
               onChange={this.update('description')}/>
           </label>
           <label>Type:
-            <input 
-              type="text"
-              value={this.state.lookout_type} 
-              onChange={this.update('lookout_type')}/>
+            <select
+              value={this.state.lookout_type}
+              onChange={this.update('lookout_type')}
+            >
+              {LOOKOUT_TYPES.map((type, i) => {
+                return <option value={type} key={i}>{type}</option>;
+              })}
+            </select>
           </label>
           <button onClick={this.handleSubmit}>Create</button>
         </form>

@@ -1,7 +1,8 @@
 export default class MarkerManager {
-  constructor(map) {
+  constructor(map, handleMarkerClick) {
     this.map = map;
     this.markers = {};
+    this.handleMarkerClick = handleMarkerClick;
   }
 
   createMarkerFromLookout(lookout){
@@ -9,8 +10,9 @@ export default class MarkerManager {
     let newMarker = new google.maps.Marker({
       position: myLatLng,
       map: this.map,
-      lookoutId: lookout.id
+      lookoutId: lookout.id,
     })
+    newMarker.addListener('click', () => this.handleMarkerClick(lookout))
     Object.assign(this.markers, {[lookout.id]: newMarker});
   } 
 

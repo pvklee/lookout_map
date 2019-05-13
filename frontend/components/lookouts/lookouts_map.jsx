@@ -9,18 +9,34 @@ class LookoutsMap extends React.Component{
       // center: {lat: 50, lng: -50}, //random location
       zoom: 11
     };
-
     this.map = new google.maps.Map(this.mapNode, mapOptions);
-    this.MarkerManager = new MarkerManager(this.map);
-    this.listenForMove();
-    this.listenForMapClick();
-    this.MarkerManager.updateMarkers(this.props.lookouts);
-  }
+    this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
 
-  componentDidUpdate(prevProps){
-    if(prevProps.lookouts !== this.props.lookouts){
+    if(this.props.singleLookout){
+      this.map.setOptions({draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true});
+      this.props.fetchLookout(this.props.lookoutId)
+    } else {
+      this.listenForMove();
+      this.listenForMapClick();
       this.MarkerManager.updateMarkers(this.props.lookouts);
     }
+  }
+
+  componentDidUpdate(){
+    if(this.props.singleLookout){
+      const targetLookoutKey = Object.keys(this.props.lookouts)[0];
+      const targetLookout = this.props.lookouts[targetLookoutKey];
+      this.MarkerManager.updateMarkers([targetLookout])
+
+      const latLng = new google.maps.LatLng(targetLookout.lat, targetLookout.lng);
+      this.map.setCenter(latLng);
+    } else {
+      this.MarkerManager.updateMarkers(this.props.lookouts);
+    }
+  }
+
+  handleMarkerClick(lookout){
+    this.props.history.push(`/lookouts/${lookout.id}`)
   }
 
   listenForMove(){

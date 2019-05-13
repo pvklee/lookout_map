@@ -1,14 +1,17 @@
 class Lookout < ApplicationRecord
-  LOOKOUT_TYPES = [
-    'view',
-    'hike',
-    'easy',
-    'ocean',
-    'mountain'
+  TYPES = [
+    'View',
+    'Hike',
+    'Easy',
+    'Ocean',
+    'Mountain'
   ].sort.freeze
 
   validates :description, :lat, :lng, presence: true
-  validates :lookout_type, inclusion: { in: LOOKOUT_TYPES }, allow_nil: true
+  validates :lookout_type, inclusion: { in: TYPES }, allow_nil: true
+
+  has_many :reviews, foreign_key: :lookout_id, dependent: :destroy
+  has_many :reviewed_users, through: :reviews, source: :author
 
   def self.in_bounds(bounds)
     self.where("lat < ?", bounds[:northEast][:lat])

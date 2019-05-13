@@ -4,7 +4,7 @@ import configureStore from './store/store'
 
 import Root from './components/root'
 
-import {fetchLookouts} from './util/lookout_api_util'
+import {createReview} from './actions/lookouts_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //TESTING
-  window.fetchLookouts = fetchLookouts;
+  window.testReview = {user_id: 2, lookout_id: 1, rating: 4, description: 'nice'}
+  window.createReview = createReview;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   //TESTING
