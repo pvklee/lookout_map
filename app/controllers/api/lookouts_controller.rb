@@ -21,7 +21,7 @@ class Api::LookoutsController < ApplicationController
   private
 
   def lookout_params
-    params.require(:lookout).permit(:description, :lat, :lng, :lookout_type)
+    params.require(:lookout).permit(:description, :lat, :lng, :lookout_type, :photo)
   end
 
   def bounds

@@ -16,11 +16,11 @@ const receiveLookout = ({lookout, reviews, authors}) => ({
   authors
 })
 
-const receiveReview = review => ({
+const receiveReview = ({review, lookout}) => ({
   type: RECEIVE_REVIEW,
-  review
+  review,
+  lookout
 })
-
 
 //async
 

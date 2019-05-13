@@ -7,9 +7,12 @@ export default class LookoutForm extends React.Component {
       lat: this.props.lat,
       lng: this.props.lng,
       description: '',
-      lookout_type: 'Easy'
+      lookout_type: 'Easy',
+      imageUrl: '',
+      imageFile: ''
     };
     this.update = this.update.bind(this);
+    this.updateFile = this.updateFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -19,8 +22,31 @@ export default class LookoutForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.createLookout(this.state)
+    const formData = new FormData();
+    formData.append('lookout[lat]', this.state.lat);
+    formData.append('lookout[lng]', this.state.lng);
+    formData.append('lookout[description]', this.state.description);
+    formData.append('lookout[lookout_type]', this.state.lookout_type);
+
+    if (this.state.imageFile) {
+      formData.append('lookout[photo]', this.state.imageFile);
+    }
+
+    this.props.createLookout(formData)
       .then(data => this.props.history.push(`/`));
+  }
+
+  updateFile(e){
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ imageUrl: reader.result, imageFile: file});
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
+    }
   }
 
   render(){
@@ -55,6 +81,13 @@ export default class LookoutForm extends React.Component {
               })}
             </select>
           </label>
+          <label>Image:
+            <input
+              type="file"
+              onChange={this.updateFile}
+            />
+          </label>
+          <img src={this.state.imageUrl} alt="upload a pic!"></img>
           <button onClick={this.handleSubmit}>Create</button>
         </form>
       </div>

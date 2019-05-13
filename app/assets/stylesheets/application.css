@@ -13,8 +13,100 @@
  *= require_tree .
  *= require_self
  */
-
+@import "variables";
 #map-container{
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 400px;
+}
+
+body{
+  background-color: rgb(120, 164, 189);
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+h1{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.lookouts-app{
+
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(191, 221, 226);
+  box-shadow: 0 4px 2px -2px #00000033;
+  user-select: none;
+}
+
+.header-nav{
+  display: flex;
+  justify-content: space-between;
+  width: 1000px;
+  margin: auto;
+}
+
+.header-logo{
+
+}
+
+.header-greeting{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-greeting-content{
+  display: flex;
+}
+
+.main{
+  width: 1000px;
+  margin: auto;
+  background-color: white;
+  margin: 10px auto;
+  padding: 10px;
+}
+
+.header-greeting-text{
+  /* padding: 2px; */
+  margin: auto 3px;
+}
+
+.session-button{
+  user-select: none;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(117, 173, 196);
+  border: 1px solid rgb(117, 173, 196);
+  transition: background-color 400ms;
+  transition: transform 400ms;
+  transition: border-color 400ms;
+  padding: 3px 5px;
+  border-radius: 2px;
+  margin: 0 3px;
+  box-shadow: 0 4px 2px -2px #00000033;
+  cursor: pointer;
+}
+
+.session-button:hover{
+  transition: background-color 0s;
+  transition: transform 400ms;
+  background-color: rgb(174, 204, 216);
+  border: 1px solid white;
+}
+
+.session-button:active{
+  transition: transform 0s;
+  transform: translate(0, 2px);
+}
+
+.session-form-container{
+  display: flex;
+  justify-content: center;
+  height: 300px;
 }

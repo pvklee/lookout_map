@@ -13,8 +13,13 @@ class LookoutsMap extends React.Component{
     this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
 
     if(this.props.singleLookout){
-      this.map.setOptions({draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true});
-      this.props.fetchLookout(this.props.lookoutId)
+      // this.map.setOptions({draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true});
+      this.map.setOptions({draggable: false});
+      const targetLookoutKey = Object.keys(this.props.lookouts)[0];
+      const targetLookout = this.props.lookouts[targetLookoutKey];
+      this.MarkerManager.updateMarkers([targetLookout])
+      const latLng = new google.maps.LatLng(targetLookout.lat, targetLookout.lng);
+      this.map.setCenter(latLng);
     } else {
       this.listenForMove();
       this.listenForMapClick();
@@ -23,14 +28,7 @@ class LookoutsMap extends React.Component{
   }
 
   componentDidUpdate(){
-    if(this.props.singleLookout){
-      const targetLookoutKey = Object.keys(this.props.lookouts)[0];
-      const targetLookout = this.props.lookouts[targetLookoutKey];
-      this.MarkerManager.updateMarkers([targetLookout])
-
-      const latLng = new google.maps.LatLng(targetLookout.lat, targetLookout.lng);
-      this.map.setCenter(latLng);
-    } else {
+    if(!this.props.singleLookout){
       this.MarkerManager.updateMarkers(this.props.lookouts);
     }
   }

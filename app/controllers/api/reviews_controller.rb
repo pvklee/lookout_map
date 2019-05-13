@@ -5,8 +5,8 @@ class Api::ReviewsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @review = @user.reviews.new(review_params)
+    @review = current_user.reviews.new(review_params)
+    @lookout = Lookout.find(@review.lookout_id)
     if @review.save
       render 'api/reviews/show'
     else

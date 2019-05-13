@@ -33,27 +33,30 @@ export default class SessionForm extends React.Component {
     const errorMessages = errors.map(error => <li key={error}>{error}</li>);
 
     return(
-      <div>
-        <div>
-          <ul>{errorMessages}</ul>
-        </div>
-        <form>
-          <input 
-            type='text'
-            value={this.state.username}
-            onChange={this.update('username')}
-            placeholder='username' />
-          <br/>
-          <input 
-            type='password'
-            value={this.state.password}
-            onChange={this.update('password')}
-            placeholder='password' />
-          <br/>
-          <button onClick={this.handleSubmit}>{buttonValue}</button>
-        </form>
-        <Link to={linkTo}>{linkText}</Link>
+      <div class="session-form-outer-container">
+        <div class="session-form-inner-container">
+          <div>
+            <ul>{errorMessages}</ul>
+          </div>
+          <form class="session-form">
+            <input 
+              type='text'
+              value={this.state.username}
+              onChange={this.update('username')}
+              placeholder='username' />
+            <br/>
+            <input 
+              type='password'
+              value={this.state.password}
+              onChange={this.update('password')}
+              placeholder='password' />
+            <br/>
+            <button onClick={this.handleSubmit}>{buttonValue}</button>
+          </form>
+          <Link to={linkTo}>{linkText}</Link>
+        </div>    
       </div>
+
 
     )
   }
