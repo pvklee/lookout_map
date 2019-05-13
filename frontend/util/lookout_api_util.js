@@ -3,7 +3,6 @@ export const fetchLookouts = (filters) => {
     url: 'api/lookouts',
     method: 'GET',
     data: filters,
-    error: err => console.log(err)
   })
 }
 
@@ -29,6 +28,5 @@ export const createReview = review => (
     url: `api/reviews`,
     method: 'POST',
     data: {review},
-    error: err => console.log(err)
   })
 )

@@ -7,7 +7,6 @@ const reviewsReducer = (state = {}, action) => {
     case RECEIVE_LOOKOUT:
       return merge({}, state, action.reviews)
     case RECEIVE_REVIEW:
-    debugger;
       return merge({}, state, {[action.review.id]: action.review})
     default:
       return state;

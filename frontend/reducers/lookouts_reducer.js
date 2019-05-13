@@ -9,7 +9,6 @@ const lookoutsReducer = (state = {}, action) => {
     case RECEIVE_LOOKOUT:
       return merge({}, state, {[action.lookout.id]: action.lookout})
     case RECEIVE_REVIEW:
-      debugger;
       const review = action.review;
       const newState = merge({}, state);
       newState[review.lookout_id].reviewIds.push(review.id);
