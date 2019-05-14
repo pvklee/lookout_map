@@ -1,6 +1,6 @@
 @lookouts.each do |lookout|
   json.set! lookout.id do
     json.partial! 'lookout', lookout: lookout
-    # json.reviewIds []
+    json.reviewIds []
   end
 end
